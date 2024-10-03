@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Test</title>
+</head>
+<body>
+    <h1>Test Dice Roller API</h1>
+    <button onclick="testAPI()">Test API</button>
+    <p id="result"></p>
+
+    <script>
+        function testAPI() {
+            fetch('https://your-api-url/api/roll')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('result').innerText = 'Dice: ' + data.dice.join(', ');
+                })
+                .catch(err => {
+                    console.error('API call failed:', err);
+                    document.getElementById('result').innerText = 'API call failed.';
+                });
+        }
+    </script>
+</body>
+</html>
